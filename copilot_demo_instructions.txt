@@ -1,0 +1,26 @@
+1. create file apispec.xml from https://app.swaggerhub.com/apis/jhawkinsRH/settlement-api/1.1.0
+
+
+2. pom.xml file: add comment under dependencies section
+   `<!-- javax.validation -->`
+   `<!-- io.swagger.codegen.v3 swagger-codegen 3.0.27 -->`
+   `<!-- io.swagger.core.v3 swagger-annotations 2.2.2 -->`
+   
+2. pom.xml file: add comment under plugins section
+   `<!-- add plugin for swagger-codegen to create model based on apispec.yml file -->`
+
+4. Correct the output path
+   from `<output>${project.basedir}/src/main/java</output>` to `<output>${project.basedir}</output>`
+
+5. open terminal and run `mvn clean compile`
+
+6. All the model classes are created
+
+7. Create SQL scripts for the model classes
+
+8. Create Data Access Objects for the SQL objects
+
+9. Create Service Layer
+
+10. Create Controller for the endpoints
+

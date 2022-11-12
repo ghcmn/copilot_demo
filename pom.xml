@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.5</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.dtcc</groupId>
+	<artifactId>gcpdemo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>gcpdemo</name>
+	<description>Demo project for Github CoPilot</description>
+	<properties>
+		<java.version>11</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- <dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>8.0.31</version>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc10</artifactId>
+			<version>19.16.0.0</version>
+		</dependency> -->
+
+		<!-- javax.validation -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>2.0.1.Final</version>
+		</dependency>
+		<!-- io.swagger.codegen.v3 swagger-codegen 3.0.27 -->
+		<dependency>
+			<groupId>io.swagger.codegen.v3</groupId>
+			<artifactId>swagger-codegen</artifactId>
+			<version>3.0.27</version>
+		</dependency>
+		<!-- io.swagger.core.v3 swagger-core 2.2.2 -->
+		<dependency>
+			<groupId>io.swagger.core.v3</groupId>
+			<artifactId>swagger-core</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.swagger.core.v3</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+			<!-- add plugin for swagger-codegen to create api & model based on apispec.yml file -->
+			<plugin>
+				<groupId>io.swagger.codegen.v3</groupId>
+				<artifactId>swagger-codegen-maven-plugin</artifactId>
+				<version>3.0.27</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>src/main/resources/apispec.yml</inputSpec>
+							<language>spring</language>
+							<configOptions>
+								<dateLibrary>java8</dateLibrary>
+								<interfaceOnly>true</interfaceOnly>
+								<useTags>true</useTags>
+								<useBeanValidation>true</useBeanValidation>
+								<useOptional>true</useOptional>
+								<java8>true</java8>
+								<modelPackage>com.dtcc.gcpdemo.model</modelPackage>
+								<apiPackage>com.dtcc.gcpdemo.api</apiPackage>
+								<invokerPackage>com.dtcc.gcpdemo</invokerPackage>
+								<groupId>com.dtcc</groupId>
+								<artifactId>gcpdemo</artifactId>
+								<artifactVersion>0.0.1-SNAPSHOT</artifactVersion>
+								<library>spring-boot</library>
+								<configPackage>com.dtcc.gcpdemo.config</configPackage>
+								<apiTestPath>src/test/java</apiTestPath>
+								<modelTestPath>src/test/java</modelTestPath>
+								<apiDocPath>src/main/resources</apiDocPath>
+								<modelDocPath>src/main/resources</modelDocPath>
+								<generateApis>true</generateApis>
+								<generateModels>true</generateModels>
+								<generateSupportingFiles>true</generateSupportingFiles>
+								<generateApiTests>false</generateApiTests>
+								<generateModelTests>false</generateModelTests>
+								<generateApiDocumentation>true</generateApiDocumentation>
+								<generateModelDocumentation>true</generateModelDocumentation>
+								<generateSupportingFiles>true</generateSupportingFiles>
+								<generatePom>false</generatePom>
+								<generateModelTests>false</generateModelTests>
+								<generateApiTests>false</generateApiTests>
+								<generateModelDocumentation>false</generateModelDocumentation>
+							</configOptions>
+							<output>${project.basedir}</output>
+							<skipOverwrite>true</skipOverwrite>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>

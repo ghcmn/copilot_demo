@@ -1,0 +1,749 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "IEX",
+    "description": "The IEX API is a set of services designed for developers and engineers. It can be used to build high-quality apps and services. We’re always working to improve the IEX API. Please check back for enhancements and improvements.",
+    "termsOfService": "http://localhost:8080/api-terms/",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/deep/auction": {
+      "get": {
+        "summary": "Auction",
+        "description": "For an example of an app that’s using stats, see our IEX mobile app",
+        "operationId": "auction",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "symbols",
+            "description": " Parameter is required Value needs to be a comma-separated list of symbols (i",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Auctions"
+        ]
+      }
+    },
+    "/deep/book": {
+      "get": {
+        "summary": "Book",
+        "description": "Subscribe to the book channel",
+        "operationId": "book",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "symbols",
+            "description": " Parameter is required Value needs to be a comma-separated list of symbols (i",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Book"
+        ]
+      }
+    },
+    "/deep/op-halt-status": {
+      "get": {
+        "summary": "Operational Halt Status",
+        "description": "Subscribe to the ophaltstatus channel",
+        "operationId": "operational-halt-status",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "symbols",
+            "description": " Parameter is required Value needs to be a comma-separated list of symbols (i",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Halt Status"
+        ]
+      }
+    },
+    "/deep/security-event": {
+      "get": {
+        "summary": "Security Event",
+        "description": "Subscribe to the securityevent channel",
+        "operationId": "security-event",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "symbols",
+            "description": " Parameter is required Value needs to be a comma-separated list of symbols (i",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Security Event"
+        ]
+      }
+    },
+    "/deep/system-event": {
+      "get": {
+        "summary": "System Event",
+        "description": "Subscribe to the systemevent channel",
+        "operationId": "system-event",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "System Event"
+        ]
+      }
+    },
+    "/hist": {
+      "get": {
+        "summary": "HIST",
+        "description": "HIST will provide the output of IEX data products for download on a T+1 basis",
+        "operationId": "hist",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "date",
+            "description": " Parameter is optional Value needs to be in four-digit year, two-digit month, two-digit day format (YYYYMMDD) (i",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Historical"
+        ]
+      }
+    },
+    "/market": {
+      "get": {
+        "summary": "Market",
+        "description": "This endpoint returns near real time traded volume on the markets",
+        "operationId": "market",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "format",
+            "description": " Parameter is optional Value can only be csv When parameter is not present, format defaults to JSON",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Markets"
+        ]
+      }
+    },
+    "/ref-data/daily-list/next-day-ex-date": {
+      "get": {
+        "summary": "Next Day Ex Date",
+        "description": "Refer to the Daily list specification for futher details",
+        "operationId": "iex-next-day-ex-date",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "format",
+            "description": " Parameter is optional Value can be csv or psv When parameter is not present, format defaults to JSON",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "token",
+            "description": " Parameter is optional Value is the API token from your IEX user account If you have been permissioned for CUSIP information you’ll receive a CUSIP field, othewise data defaults to exclude CUSIP",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Daily List"
+        ]
+      }
+    },
+    "/ref-data/daily-list/symbol-directory": {
+      "get": {
+        "summary": "Corporate Actions",
+        "description": "Refer to the Daily list specification for futher details",
+        "operationId": "iex-corporate-actions",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "format",
+            "description": " Parameter is optional Value can be csv or psv When parameter is not present, format defaults to JSON",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "token",
+            "description": " Parameter is optional Value is the API token from your IEX user account If you have been permissioned for CUSIP information you’ll receive a CUSIP field, othewise data defaults to exclude CUSIP",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Daily List"
+        ]
+      }
+    },
+    "/stats/historical": {
+      "get": {
+        "summary": "Historical Summary",
+        "description": "See our stats page for a reference of the keys",
+        "operationId": "historical-summary",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "date",
+            "description": " Parameter is optional Value needs to be in four-digit year, two-digit month format (YYYYMM) (i",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "description": " Parameter is optional Value can only be csv When parameter is not present, format defaults to JSON",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Historical"
+        ]
+      }
+    },
+    "/stats/recent": {
+      "get": {
+        "summary": "Recent",
+        "description": "This call will return a minimum of the last five trading days up to all trading days of the current month",
+        "operationId": "recent",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Statistics"
+        ]
+      }
+    },
+    "/stock/market/batch": {
+      "get": {
+        "summary": "Batch Requests",
+        "description": "Returns batch stock quotes",
+        "operationId": "batch-requests",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "*",
+            "description": " Optional  Parameters that are sent to individual endpoints can be specified in batch calls and will be applied to each supporting endpoint",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "range",
+            "description": " Optional  Used to specify a chart range if chart is used in types parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "symbols",
+            "description": " Optional  Comma delimited list of symbols limited to 100",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "types",
+            "description": " Required  Comma delimited list of endpoints to call",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Quotes",
+          "Batch"
+        ]
+      }
+    },
+    "/stock/{symbol}/delayed-quote": {
+      "get": {
+        "summary": "Delayed Quote",
+        "description": "This returns the 15 minute delayed market quote",
+        "operationId": "delayed-quote",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "symbol",
+            "description": "Stock ticker symbol",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Quotes"
+        ]
+      }
+    },
+    "/stock/{symbol}/earnings": {
+      "get": {
+        "summary": "Earnings",
+        "description": "Pulls data from the four most recent reported quarters",
+        "operationId": "earnings",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "symbol",
+            "description": "Stock ticker symbol",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Earnings"
+        ]
+      }
+    },
+    "/stock/{symbol}/financials": {
+      "get": {
+        "summary": "Financials",
+        "description": "Pulls income statement, balance sheet, and cash flow data from the four most recent reported quarters",
+        "operationId": "financials",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "symbol",
+            "description": "Stock ticker symbol",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Financials"
+        ]
+      }
+    },
+    "/stock/{symbol}/list": {
+      "get": {
+        "summary": "List",
+        "description": "Refer to the quote section",
+        "operationId": "list",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "displayPercent",
+            "description": " Optional  If set to true, all percentage values will be multiplied by a factor of 100 (Ex: /stock/aapl/quote?displayPercent=true)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Quotes"
+        ]
+      }
+    },
+    "/stock/{symbol}/news/last/{range}": {
+      "get": {
+        "summary": "News",
+        "description": "The above example will return JSON with the following keys",
+        "operationId": "news",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "range",
+            "description": "The date range",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "symbol",
+            "description": "Stock ticker symbol",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Financial News"
+        ]
+      }
+    },
+    "/stock/{symbol}/previous": {
+      "get": {
+        "summary": "Previous",
+        "description": "This returns previous day adjusted price data for a single stock, or an object keyed by symbol of price data for the whole market",
+        "operationId": "previous",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "symbol",
+            "description": "Stock ticker symbol",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Quotes",
+          "Adjustments"
+        ]
+      }
+    },
+    "/stock/{symbol}/quote": {
+      "get": {
+        "summary": "Quote",
+        "description": "Pulls a stock quote using any ticker symbol",
+        "operationId": "quote",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "displayPercent",
+            "description": " Optional If set to true, all percentage values will be multiplied by a factor of 100 (Ex: /stock/aapl/quote?displayPercent=true)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "symbol",
+            "description": "Stock ticker symbol",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Quotes"
+        ]
+      }
+    },
+    "/stock/{symbol}/short-interest": {
+      "get": {
+        "summary": "Short Interest List",
+        "description": "Refer to the Short Interest specification for further details",
+        "operationId": "iex-short-interest-list",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "format",
+            "description": " Parameter is optional Value can be csv or psv When parameter is not present, format defaults to JSON",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "symbol",
+            "description": "Stock ticker symbol",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "token",
+            "description": " Parameter is optional Value is the API token from your IEX user account If you have been permissioned for CUSIP information you’ll receive a CUSIP field, othewise data defaults to exclude CUSIP",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Short Interest"
+        ]
+      }
+    },
+    "/stock/{symbol}/splits/{range}": {
+      "get": {
+        "summary": "Splits",
+        "description": "Returns stock splits for any date range using ticker symbol",
+        "operationId": "splits",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "range",
+            "description": "The date range",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "symbol",
+            "description": "Stock ticker symbol",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Quotes",
+          "Splits"
+        ]
+      }
+    },
+    "/tops": {
+      "get": {
+        "summary": "TOPS",
+        "description": "Our eligible symbol reference is updated daily",
+        "operationId": "tops",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "format",
+            "description": " Parameter is optional Value can only be csv When parameter is not present, format defaults to JSON",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "symbols",
+            "description": " Parameter is optional Value needs to be a comma-separated list of symbols (i",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Tops"
+        ]
+      }
+    },
+    "Market Data,s": {
+      "get": {
+        "summary": "Chart",
+        "description": "The above example will return JSON with the following keys",
+        "operationId": "chart",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "chartInterval",
+            "description": " Optional number",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "chartReset",
+            "description": " Optional boolean",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "chartSimplify",
+            "description": " Optional boolean",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "range",
+            "description": "The date range",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "symbol",
+            "description": "Stock ticker symbol",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Market Data",
+          "Charts"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://api.iextrading.com/1.0"
+    }
+  ]
+}
